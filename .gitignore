@@ -19,3 +19,5 @@ coverage/
 # IDEs and editors
 .vscode/
 .idea/
+
+allure-results/
