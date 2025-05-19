@@ -7,7 +7,7 @@ test('Login, add product to cart, and go to checkout', async ({ page }) => {
   // Step 2: Fill login form
   await page.fill('#user-name', 'standard_user');
   await page.fill('#password', 'secret_sauce');
-  await page.click('#login-button');
+  await page.click('#login-button1');
 
   // Step 3: Verify navigation to inventory page
   await expect(page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
