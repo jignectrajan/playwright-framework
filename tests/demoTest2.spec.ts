@@ -19,7 +19,7 @@ test('Login, add product to cart, and go to checkout', async ({ page }) => {
   await page.click('.shopping_cart_link');
 
   // Step 6: Verify cart page
-  await expect(page).toHaveURL('https://www.saucedemo.com/v1/cart.html');
+  await expect(page).toHaveURL('https://www.saucedemo.com/v1.html');
 
   // Step 7: Click on checkout
   await page.click('//a[text()="CHECKOUT"]');

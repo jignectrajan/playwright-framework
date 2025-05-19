@@ -10,7 +10,7 @@ test('Login, add product to cart, and go to checkout', async ({ page }) => {
   await page.click('#login-button');
 
   // Step 3: Verify navigation to inventory page
-  await expect(page).toHaveURL('https://www.saucedemo.com/v1/inventory.html');
+  await expect(page).toHaveURL('https://www.saucedemo.com/v1/inventor.html');
 
   // Step 4: Add a product to the cart
   await page.click('//div[text()="Sauce Labs Backpack"]/parent::a/parent::div/following-sibling::div/button');
