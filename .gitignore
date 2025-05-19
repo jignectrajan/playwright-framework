@@ -20,4 +20,6 @@ coverage/
 .vscode/
 .idea/
 
+test-results/
 allure-results/
+allure-report/
