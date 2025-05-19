@@ -5,5 +5,4 @@ export default defineConfig({
     headless: false  // run in headed mode
   },
   reporter: [['list'], ['allure-playwright']],
-  testDir: './tests',  // this matches your folder structure
 });
