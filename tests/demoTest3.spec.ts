@@ -25,7 +25,7 @@ test('Login, add product to cart, and go to checkout', async ({ page }) => {
   await page.click('//a[text()="CHECKOUT"]');
 
   // Step 8: Verify checkout page
-  await expect(page).toHaveURL('https://www.saucedemo.com/v1/checkout--one.html');
+  await expect(page).toHaveURL('https://www.saucedemo.com/v1/checkout-step-one.html');
 
   // Optionally, fill first checkout form step
   await page.fill('#first-name', 'John');
