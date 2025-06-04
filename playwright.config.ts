@@ -1,10 +1,17 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
+  timeout: 120000,
+
   use: {
     screenshot: 'only-on-failure', // 👈 captures screenshot when test fails
     trace: 'on-first-retry',       // optional: captures trace for failures
-    headless: false  // run in headed mode
+    headless: false,  // run in headed mode
+    viewport: null,      // disables viewport emulation; uses the browser window size
+    launchOptions: {
+      args: ['--start-maximized'], // start maximized window
+    },
   },
   reporter: [['list'], ['allure-playwright']],
+
 });
