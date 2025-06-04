@@ -1,25 +1,32 @@
-// pages/OpenAccountPage.ts
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class OpenAccountPage {
-  constructor(private page: Page) {}
+  private openAccountTab: Locator;
+  private customerDropdown: Locator;
+  private currencyDropdown: Locator;
+  private processButton: Locator;
+
+  constructor(private page: Page) {
+    this.openAccountTab = this.page.locator('button[ng-class="btnClass2"]');
+    this.customerDropdown = this.page.locator('#userSelect');
+    this.currencyDropdown = this.page.locator('#currency');
+    this.processButton = this.page.locator('button[type="submit"]');
+  }
 
   async clickOpenAccountTab() {
-    await this.page.click('button[ng-class="btnClass2"]');
+    await this.openAccountTab.click();
   }
 
   async selectCustomer(name: string) {
-    await this.page.selectOption('#userSelect', { label: name });
+    await this.customerDropdown.selectOption({ label: name });
   }
 
   async selectCurrency(currency: string) {
-    await this.page.selectOption('#currency', { label: currency });
+    await this.currencyDropdown.selectOption({ label: currency });
   }
 
   async clickProcessButton() {
-    await this.page.click('button[type="submit"]');
-    await this.page.waitForTimeout(3000); // slight wait before dialog
-   // const alert = await this.page.waitForEvent('dialog');
-   // await alert.accept();
+    await this.processButton.click();
+    await this.page.waitForTimeout(3000);
   }
 }

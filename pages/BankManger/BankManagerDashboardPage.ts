@@ -1,18 +1,38 @@
-// pages/BankManagerDashboardPage.ts
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class BankManagerDashboardPage {
-  constructor(private page: Page) {}
+  private addCustomerButton: Locator;
+  private openAccountButton: Locator;
+  private customersButton: Locator;
 
-  async getAddCustomerButton() {
-    return this.page.locator('button[ng-class="btnClass1"]');
+  constructor(private page: Page) {
+    this.addCustomerButton = this.page.locator('button[ng-class="btnClass1"]');
+    this.openAccountButton = this.page.locator('button[ng-class="btnClass2"]');
+    this.customersButton = this.page.locator('button[ng-class="btnClass3"]');
   }
 
-  async getOpenAccountButton() {
-    return this.page.locator('button[ng-class="btnClass2"]');
+  async clickAddCustomer() {
+    await this.addCustomerButton.click();
   }
 
-  async getCustomersButton() {
-    return this.page.locator('button[ng-class="btnClass3"]');
+  async clickOpenAccount() {
+    await this.openAccountButton.click();
+  }
+
+  async clickCustomers() {
+    await this.customersButton.click();
+  }
+
+  async isAddCustomerButtonVisible() {
+    await this.page.waitForTimeout(2000);
+    return await this.addCustomerButton.isVisible();
+  }
+
+  async isOpenAccountButtonVisible() {
+    return await this.openAccountButton.isVisible();
+  }
+
+  async isCustomersButtonVisible() {
+    return await this.customersButton.isVisible();
   }
 }

@@ -1,23 +1,32 @@
-// pages/AddCustomerPage.ts
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 
 export class AddCustomerPage {
-  constructor(private page: Page) {}
+  private addCustomerTab: Locator;
+  private firstNameInput: Locator;
+  private lastNameInput: Locator;
+  private postCodeInput: Locator;
+  private submitButton: Locator;
+
+  constructor(private page: Page) {
+    this.addCustomerTab = this.page.locator('button[ng-class="btnClass1"]');
+    this.firstNameInput = this.page.locator('input[ng-model="fName"]');
+    this.lastNameInput = this.page.locator('input[ng-model="lName"]');
+    this.postCodeInput = this.page.locator('input[ng-model="postCd"]');
+    this.submitButton = this.page.locator('button[type="submit"]');
+  }
 
   async clickAddCustomerTab() {
-    await this.page.click('button[ng-class="btnClass1"]');
+    await this.addCustomerTab.click();
   }
 
   async fillCustomerForm(firstName: string, lastName: string, postCode: string) {
-    await this.page.fill('input[ng-model="fName"]', firstName);
-    await this.page.fill('input[ng-model="lName"]', lastName);
-    await this.page.fill('input[ng-model="postCd"]', postCode);
+    await this.firstNameInput.fill(firstName);
+    await this.lastNameInput.fill(lastName);
+    await this.postCodeInput.fill(postCode);
   }
 
   async submitCustomerForm() {
-    await this.page.click('button[type="submit"]');
+    await this.submitButton.click();
     await this.page.waitForTimeout(3000);
-    // const alert = await this.page.waitForEvent('dialog');
-    // await alert.accept();
   }
 }

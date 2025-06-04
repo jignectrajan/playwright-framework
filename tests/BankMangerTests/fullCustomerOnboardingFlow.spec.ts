@@ -1,5 +1,6 @@
 // tests/fullCustomerOnboardingFlow.spec.ts
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { assert } from 'chai';
 import { BankManagerLoginPage } from '../../pages/BankManger/BankManagerLoginPage';
 import { AddCustomerPage } from '../../pages/BankManger/AddCustomerPage';
 import { OpenAccountPage } from '../../pages/BankManger/OpenAccountPage';
@@ -16,29 +17,36 @@ test('Add customer, open account, and verify account number', async ({ page }) =
   const postCode = '54321';
   const fullName = `${firstName} ${lastName}`;
 
-  // Step 1: Go to login and login as Bank Manager
+  console.log('🔐 Step 1: Navigate to login page and log in as Bank Manager');
   await loginPage.goToLoginPage();
   await loginPage.clickBankManagerLogin();
 
-  // Step 2: Add Customer
+  console.log('➕ Step 2: Add a new customer');
   await addCustomerPage.clickAddCustomerTab();
   await addCustomerPage.fillCustomerForm(firstName, lastName, postCode);
   await addCustomerPage.submitCustomerForm();
 
-  // Step 3: Open Account
+  console.log('💼 Step 3: Open a bank account for the new customer');
   await openAccountPage.clickOpenAccountTab();
   await openAccountPage.selectCustomer(fullName);
   await openAccountPage.selectCurrency('Dollar');
   await openAccountPage.clickProcessButton();
 
-  // Step 4: Verify account number is added
+  console.log('🔍 Step 4: Search for customer and verify account details');
   await customersPage.clickCustomersTab();
   await customersPage.searchCustomer(firstName);
 
+  console.log('✅ Step 5: Assert all customer details including account number');
   const customerRow = await customersPage.getFirstCustomerRow();
+  const cells = customerRow.locator('td');
 
-  await expect(customerRow.locator('td').nth(0)).toHaveText(firstName);
-  await expect(customerRow.locator('td').nth(1)).toHaveText(lastName);
-  await expect(customerRow.locator('td').nth(2)).toHaveText(postCode);
-  await expect(customerRow.locator('td').nth(3)).not.toBeEmpty(); // Account number should not be empty
+  const actualFirstName = await cells.nth(0).innerText();
+  const actualLastName = await cells.nth(1).innerText();
+  const actualPostCode = await cells.nth(2).innerText();
+  const actualAccountNumber = await cells.nth(3).innerText();
+
+  assert.equal(actualFirstName, firstName, 'First name should match');
+  assert.equal(actualLastName, lastName, 'Last name should match');
+  assert.equal(actualPostCode, postCode, 'Post code should match');
+  assert.isNotEmpty(actualAccountNumber, 'Account number should not be empty');
 });
