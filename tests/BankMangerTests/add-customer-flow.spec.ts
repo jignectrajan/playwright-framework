@@ -28,14 +28,9 @@ test('Add customer and verify in customer list', async ({ page }) => {
   await customersPage.searchCustomer(firstName);
 
   console.log('✅ Step 4: Validate customer information in the list');
-  const customerRow = await customersPage.getFirstCustomerRow();
-  const cells = customerRow.locator('td');
+  const { firstName: actualFirstName, lastName: actualLastName, postCode: actualPostCode } = await customersPage.getFirstCustomerRowDetails();
 
-  const actualFirstName = await cells.nth(0).innerText();
-  const actualLastName = await cells.nth(1).innerText();
-  const actualPostCode = await cells.nth(2).innerText();
-
-  assert.equal(actualFirstName, firstName, 'First name should match');
-  assert.equal(actualLastName, lastName, 'Last name should match');
-  assert.equal(actualPostCode, postCode, 'Post code should match');
+  assert.strictEqual(actualFirstName, firstName, 'First name should match');
+  assert.strictEqual(actualLastName, lastName, 'Last name should match');
+  assert.strictEqual(actualPostCode, postCode, 'Post code should match');
 });

@@ -37,13 +37,7 @@ test('Add customer, open account, and verify account number', async ({ page }) =
   await customersPage.searchCustomer(firstName);
 
   console.log('✅ Step 5: Assert all customer details including account number');
-  const customerRow = await customersPage.getFirstCustomerRow();
-  const cells = customerRow.locator('td');
-
-  const actualFirstName = await cells.nth(0).innerText();
-  const actualLastName = await cells.nth(1).innerText();
-  const actualPostCode = await cells.nth(2).innerText();
-  const actualAccountNumber = await cells.nth(3).innerText();
+  const { firstName: actualFirstName, lastName: actualLastName, postCode: actualPostCode, accountNumber: actualAccountNumber } = await customersPage.getFirstCustomerRowWithAccount();
 
   assert.equal(actualFirstName, firstName, 'First name should match');
   assert.equal(actualLastName, lastName, 'Last name should match');

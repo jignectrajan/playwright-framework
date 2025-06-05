@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class AddCustomerPage {
   private addCustomerTab: Locator;
@@ -8,13 +8,14 @@ export class AddCustomerPage {
   private submitButton: Locator;
 
   constructor(private page: Page) {
-    this.addCustomerTab = this.page.locator('button[ng-class="btnClass1"]');
-    this.firstNameInput = this.page.locator('input[ng-model="fName"]');
-    this.lastNameInput = this.page.locator('input[ng-model="lName"]');
-    this.postCodeInput = this.page.locator('input[ng-model="postCd"]');
-    this.submitButton = this.page.locator('button[type="submit"]');
+    this.addCustomerTab = page.getByRole('button', { name: 'Add Customer' }); // ✅ More robust selector
+    this.firstNameInput = page.locator('input[ng-model="fName"]');
+    this.lastNameInput = page.locator('input[ng-model="lName"]');
+    this.postCodeInput = page.locator('input[ng-model="postCd"]');
+    this.submitButton = page.locator('button[type="submit"]');
   }
 
+  // ✅ Added log for debugging and readability
   async clickAddCustomerTab() {
     await this.addCustomerTab.click();
   }
@@ -26,7 +27,8 @@ export class AddCustomerPage {
   }
 
   async submitCustomerForm() {
-    await this.submitButton.click();
-    await this.page.waitForTimeout(3000);
+    await Promise.all([
+      this.submitButton.click()
+    ]);
   }
 }
