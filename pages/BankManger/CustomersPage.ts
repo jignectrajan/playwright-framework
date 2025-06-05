@@ -40,4 +40,32 @@ export class CustomersPage {
     await deleteBtn.click();
   }
 
+  async getFirstCustomerRowDetails(): Promise<{ firstName: string; lastName: string; postCode: string }> {
+    const customerRow = await this.getFirstCustomerRow();
+    const cells = customerRow.locator('td');
+
+    const firstName = await cells.nth(0).innerText();
+    const lastName = await cells.nth(1).innerText();
+    const postCode = await cells.nth(2).innerText();
+
+    return { firstName, lastName, postCode };
+  }
+
+  async getFirstCustomerRowWithAccount(): Promise<{
+    firstName: string;
+    lastName: string;
+    postCode: string;
+    accountNumber: string;
+  }> {
+    const customerRow = await this.getFirstCustomerRow();
+    const cells = customerRow.locator('td');
+
+    const firstName = await cells.nth(0).innerText();
+    const lastName = await cells.nth(1).innerText();
+    const postCode = await cells.nth(2).innerText();
+    const accountNumber = await cells.nth(3).innerText();
+
+    return { firstName, lastName, postCode, accountNumber };
+  }
+
 }
