@@ -1,34 +1,39 @@
-import { Page, Locator, expect } from '@playwright/test';
+// imports
+import { Page } from '@playwright/test';
+import { BasePage } from '../BasePage';
 
-export class AddCustomerPage {
-  private addCustomerTab: Locator;
-  private firstNameInput: Locator;
-  private lastNameInput: Locator;
-  private postCodeInput: Locator;
-  private submitButton: Locator;
+// Locators
+const addCustomerTab = "//button[contains(text(),'Add Customer')]";
+const firstNameInput = 'input[ng-model="fName"]';
+const lastNameInput = 'input[ng-model="lName"]';
+const postCodeInput = 'input[ng-model="postCd"]';
+const submitButton = 'button[type="submit"]';
 
-  constructor(private page: Page) {
-    this.addCustomerTab = page.getByRole('button', { name: 'Add Customer' }); // ✅ More robust selector
-    this.firstNameInput = page.locator('input[ng-model="fName"]');
-    this.lastNameInput = page.locator('input[ng-model="lName"]');
-    this.postCodeInput = page.locator('input[ng-model="postCd"]');
-    this.submitButton = page.locator('button[type="submit"]');
+export class AddCustomerPage extends BasePage {
+  constructor(page: Page) {
+    super(page);
   }
 
-  // ✅ Added log for debugging and readability
+  /**
+   * Clicks the "Add Customer" tab
+   */
   async clickAddCustomerTab() {
-    await this.addCustomerTab.click();
+    await this.page.click(addCustomerTab);
   }
 
+  /**
+   * Fills the customer form with first name, last name, and post code
+   */
   async fillCustomerForm(firstName: string, lastName: string, postCode: string) {
-    await this.firstNameInput.fill(firstName);
-    await this.lastNameInput.fill(lastName);
-    await this.postCodeInput.fill(postCode);
+    await this.page.fill(firstNameInput, firstName);
+    await this.page.fill(lastNameInput, lastName);
+    await this.page.fill(postCodeInput, postCode);
   }
 
+  /**
+   * Submits the form
+   */
   async submitCustomerForm() {
-    await Promise.all([
-      this.submitButton.click()
-    ]);
+    await this.page.click(submitButton);
   }
 }
