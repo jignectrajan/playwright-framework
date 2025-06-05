@@ -2,10 +2,11 @@ import { test } from '@playwright/test';
 import { CustomerLoginPage } from '../../pages/CustomerLoginPage';
 import { AccountPage } from '../../pages/AccountPage';
 import * as assert from 'assert';
+import { BASE_URL } from '../../constants';
 
 test('Reset button should clear transaction list', async ({ page }) => {
   console.log('Navigating to banking app and logging in as Harry Potter');
-  await page.goto('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
+  await page.goto(BASE_URL);
   const customerLogin = new CustomerLoginPage(page);
   await customerLogin.loginAsCustomer('Harry Potter');
 

@@ -1,4 +1,3 @@
-// tests/BankingAppE2E.spec.ts
 import { test } from '@playwright/test';
 import { assert } from 'chai';
 import { BankManagerLoginPage } from '../pages/BankManger/BankManagerLoginPage';
