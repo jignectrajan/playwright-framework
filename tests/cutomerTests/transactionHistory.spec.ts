@@ -1,14 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { CustomerLoginPage } from '../../pages/CustomerLoginPage';
-import { AccountPage } from '../../pages/AccountPage';
-import { BASE_URL } from '../../constants';
+import { CustomerLoginPage } from '../../pageobject/customerLoginPO';
+import { AccountPage } from '../../pageobject/accountPO';
 import { createStepLogger } from '../../utilities/stepLogger';
 const step = createStepLogger();
 
 test('Transaction history should display correct entries in correct order', async ({ page }) => {
   step('Navigating to banking app and logging in as Harry Potter');
-  await page.goto(BASE_URL);
   const customerLogin = new CustomerLoginPage(page);
+  await customerLogin.goToLoginPage();
   await customerLogin.loginAsCustomer('Harry Potter');
 
   const account = new AccountPage(page);

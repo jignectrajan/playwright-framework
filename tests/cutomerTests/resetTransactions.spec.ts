@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { CustomerLoginPage } from '../../pages/CustomerLoginPage';
-import { AccountPage } from '../../pages/AccountPage';
+import { CustomerLoginPage } from '../../pageobject/customerLoginPO';
+import { AccountPage } from '../../pageobject/accountPO';
 import * as assert from 'assert';
 import { BASE_URL } from '../../constants';
 import { createStepLogger } from '../../utilities/stepLogger';

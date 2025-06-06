@@ -4,6 +4,7 @@ export default defineConfig({
   timeout: 120000,
 
   use: {
+    baseURL: 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login', //BaseURL 
     screenshot: 'only-on-failure', // 👈 captures screenshot when test fails
     trace: 'on-first-retry',       // optional: captures trace for failures
     headless: false,  // run in headed mode

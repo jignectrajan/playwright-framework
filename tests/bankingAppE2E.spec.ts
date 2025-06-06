@@ -1,22 +1,15 @@
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { BankManagerLoginPage } from '../pages/BankManger/BankManagerLoginPage';
-import { BankManagerDashboardPage } from '../pages/BankManger/BankManagerDashboardPage';
-import { AddCustomerPage } from '../pages/BankManger/AddCustomerPage';
-import { OpenAccountPage } from '../pages/BankManger/OpenAccountPage';
-import { CustomersPage } from '../pages/BankManger/CustomersPage';
-import { CustomerLoginPage } from '../pages/CustomerLoginPage';
-import { AccountPage } from '../pages/AccountPage';
+import { BankManagerLoginPage } from '../pageobject/bankmanager/bankManagerLoginPO';
+import { BankManagerDashboardPage } from '../pageobject/bankmanager/bankmanagerDashboardPO';
+import { AddCustomerPage } from '../pageobject/bankmanager/addNewCustomerPO';
+import { OpenAccountPage } from '../pageobject/bankmanager/openAccountPO';
+import { CustomersPage } from '../pageobject/bankmanager/customersPO';
+import { CustomerLoginPage } from '../pageobject/customerLoginPO';
+import { AccountPage } from '../pageobject/accountPO';
 import { createStepLogger } from '../utilities/stepLogger';
+import { createCustomerData } from '../testData/customerDataFactory'; // <-- import factory
 const step = createStepLogger();
-
-const customer = {
-  firstName: 'John',
-  lastName: 'Doe',
-  postCode: '12345',
-  fullName: 'John Doe',
-  currency: 'Dollar'
-};
 
 test('Banking App E2E Flow', async ({ page }) => {
   const bankManagerLogin = new BankManagerLoginPage(page);
@@ -26,6 +19,7 @@ test('Banking App E2E Flow', async ({ page }) => {
   const customers = new CustomersPage(page);
   const customerLogin = new CustomerLoginPage(page);
   const accountPage = new AccountPage(page);
+  const customer = createCustomerData();
 
   step('🔐Bank Manager Login and Add Customer');
   await bankManagerLogin.goToLoginPage();
@@ -36,21 +30,21 @@ test('Banking App E2E Flow', async ({ page }) => {
 
   step('🏦Open Account for the new customer');
   await dashboard.clickOpenAccount();
-  await openAccount.selectCustomer(customer.fullName);
+  await openAccount.selectCustomer(customer.firstName + ' ' + customer.lastName);
   await openAccount.selectCurrency(customer.currency);
   await openAccount.clickProcessButton();
 
   step('🧾Validate customer in list');
   await dashboard.clickCustomers();
   await customers.searchCustomer(customer.firstName);
-  const customerRow = await customers.getFirstCustomerRow();
+  const customerRow = customers.getFirstCustomerRow();
   const rowText = await customerRow.innerText();
   assert.include(rowText, customer.firstName, 'Customer should appear in the list');
 
   step('👤Login as Customer');
-  await page.getByText('Home').click();
+  await customerLogin.clickOnHomeButton();
   await customerLogin.clickCustomerLogin();
-  await customerLogin.selectCustomer(customer.fullName);
+  await customerLogin.selectCustomer(customer.firstName + ' ' + customer.lastName);
   await customerLogin.clickLogin();
   const displayedCurrency = await accountPage.getDisplayedCurrency();
   assert.strictEqual(displayedCurrency, customer.currency, 'Displayed currency should match the selected currency');
@@ -79,7 +73,7 @@ test('Banking App E2E Flow', async ({ page }) => {
   assert.strictEqual(balance, expectedBalance, `Balance should be ${expectedBalance}`);
 
   step('🚪Logout and verify redirection to customer page');
-  await page.getByText('Logout').click();
+  await accountPage.clickOnLogOutButton();
   const currentUrl = page.url();
   assert.include(currentUrl, '/customer', 'Should redirect to customer page after logout');
 });

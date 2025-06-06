@@ -1,9 +1,11 @@
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { AddCustomerPage } from '../../pages/BankManger/AddCustomerPage';
-import { CustomersPage } from '../../pages/BankManger/CustomersPage';
-import { BankManagerLoginPage } from '../../pages/BankManger/BankManagerLoginPage';
+import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomerPO';
+import { CustomersPage } from '../../pageobject/bankmanager/customersPO';
+import { BankManagerLoginPage } from '../../pageobject/bankmanager/bankManagerLoginPO';
 import { createStepLogger } from '../../utilities/stepLogger';
+import { createCustomerData } from '../../testData/customerDataFactory'; // <-- import factory
+
 const step = createStepLogger();
 
 
@@ -11,14 +13,7 @@ test('Verify that customer is added in the customer list', async ({ page }) => {
   const loginPage = new BankManagerLoginPage(page);
   const addCustomerPage = new AddCustomerPage(page);
   const customersPage = new CustomersPage(page);
-
-  const firstName = 'John';
-  const lastName = 'Doe';
-  const postCode = '12345';
-
-// Add steps like this so it can ve dynamically update when the testcases are running
-// let i: number = 1;
-// step(`Step ${i}: User clicks on the Reward tab and selects the Partner menu`);
+  const customer = createCustomerData();
 
   step('Go to login page and log in as Bank Manager');
   await loginPage.goToLoginPage();
@@ -26,17 +21,17 @@ test('Verify that customer is added in the customer list', async ({ page }) => {
 
   step('➕Click Add Customer tab and fill customer details');
   await addCustomerPage.clickAddCustomerTab();
-  await addCustomerPage.fillCustomerForm(firstName, lastName, postCode);
+  await addCustomerPage.fillCustomerForm(customer.firstName, customer.lastName, customer.postCode);
   await addCustomerPage.submitCustomerForm();
 
   step('🔍Navigate to Customers tab and search for the customer');
   await customersPage.clickCustomersTab();
-  await customersPage.searchCustomer(firstName);
+  await customersPage.searchCustomer(customer.firstName);
 
   step('✅Validate customer information in the list');
   const { firstName: actualFirstName, lastName: actualLastName, postCode: actualPostCode } = await customersPage.getFirstCustomerRowDetails();
 
-  assert.strictEqual(actualFirstName, firstName, 'First name should match');
-  assert.strictEqual(actualLastName, lastName, 'Last name should match');
-  assert.strictEqual(actualPostCode, postCode, 'Post code should match');
+  assert.strictEqual(actualFirstName, customer.firstName, 'First name should match');
+  assert.strictEqual(actualLastName, customer.lastName, 'Last name should match');
+  assert.strictEqual(actualPostCode, customer.postCode, 'Post code should match');
 });
