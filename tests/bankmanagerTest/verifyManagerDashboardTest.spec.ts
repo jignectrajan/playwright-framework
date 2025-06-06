@@ -1,8 +1,8 @@
 // tests/verifyManagerDashboardButtons.spec.ts
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { BankManagerLoginPage } from '../../pageobject/bankmanager/bankManagerLoginPO';
-import { BankManagerDashboardPage } from '../../pageobject/bankmanager/bankmanagerDashboardPO';
+import { BankManagerLoginPage } from '../../pageobject/bankmanager/BankManagerLoginPage';
+import { BankManagerDashboardPage } from '../../pageobject/bankmanager/BankManagerDashboardPage';
 import { createStepLogger } from '../../utilities/stepLogger';
 const step = createStepLogger();
 

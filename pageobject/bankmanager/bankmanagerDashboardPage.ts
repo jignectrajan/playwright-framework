@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../basePO'; // Adjust path based on your structure
+import { BasePage } from '../BasePage'; // Adjust path based on your structure
 
 // Locators in camelCase
 const addCustomerButton = 'button[ng-class="btnClass1"]';
@@ -12,7 +12,6 @@ const customersButton = 'button[ng-class="btnClass3"]';
  */
 export class BankManagerDashboardPage extends BasePage {
   /**
-   * Thursday, June 05, 2025 12:34 PM
    *
    * Constructor to initialize the base Page.
    * @param page Playwright Page object
@@ -22,7 +21,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
    *
    * Clicks on "Add Customer" button.
    */
@@ -31,7 +29,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
    *
    * Clicks on "Open Account" button.
    */
@@ -40,7 +37,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
    *
    * Clicks on "Customers" button.
    */
@@ -49,7 +45,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
    *
    * Verifies if the "Add Customer" button is visible.
    * Includes a wait for the button to become visible.
@@ -61,7 +56,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
    *
    * Verifies if the "Open Account" button is visible.
    * @returns Promise<boolean>
@@ -71,7 +65,7 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Verifies if the "Customers" button is visible.
    * @returns Promise<boolean>

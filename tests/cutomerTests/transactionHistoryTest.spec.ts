@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { CustomerLoginPage } from '../../pageobject/customerLoginPO';
-import { AccountPage } from '../../pageobject/accountPO';
+import { CustomerLoginPage } from '../../pageobject/customerLoginPage';
+import { AccountPage } from '../../pageobject/accountPage';
 import { createStepLogger } from '../../utilities/stepLogger';
 const step = createStepLogger();
 

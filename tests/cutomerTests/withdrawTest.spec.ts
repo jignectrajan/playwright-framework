@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { CustomerLoginPage } from '../../pageobject/customerLoginPO';
-import { AccountPage } from '../../pageobject/accountPO';
+import { CustomerLoginPage } from '../../pageobject/customerLoginPage';
+import { AccountPage } from '../../pageobject/accountPage';
 import { createStepLogger } from '../../utilities/stepLogger';
 const step = createStepLogger();
 

@@ -1,14 +1,15 @@
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { BankManagerLoginPage } from '../pageobject/bankmanager/bankManagerLoginPO';
-import { BankManagerDashboardPage } from '../pageobject/bankmanager/bankmanagerDashboardPO';
-import { AddCustomerPage } from '../pageobject/bankmanager/addNewCustomerPO';
-import { OpenAccountPage } from '../pageobject/bankmanager/openAccountPO';
-import { CustomersPage } from '../pageobject/bankmanager/customersPO';
-import { CustomerLoginPage } from '../pageobject/customerLoginPO';
-import { AccountPage } from '../pageobject/accountPO';
+import { BankManagerLoginPage } from '../pageobject/bankmanager/BankManagerLoginPage';
+import { BankManagerDashboardPage } from '../pageobject/bankmanager/BankManagerDashboardPage';
+import { AddCustomerPage } from '../pageobject/bankmanager/addNewCustomersPage';
+import { OpenAccountPage } from '../pageobject/bankmanager/OpenAccountPage';
+import { CustomersPage } from '../pageobject/bankmanager/CustomersPage';
+import { CustomerLoginPage } from '../pageobject/CustomerLoginPage';
+import { AccountPage } from '../pageobject/AccountPage';
 import { createStepLogger } from '../utilities/stepLogger';
-import { createCustomerData } from '../testData/customerDataFactory'; // <-- import factory
+import { CustomerData } from '../dataFactory/customerData';
+const customer = CustomerData.createCustomerData();
 const step = createStepLogger();
 
 test('Banking App E2E Flow', async ({ page }) => {
@@ -19,7 +20,6 @@ test('Banking App E2E Flow', async ({ page }) => {
   const customers = new CustomersPage(page);
   const customerLogin = new CustomerLoginPage(page);
   const accountPage = new AccountPage(page);
-  const customer = createCustomerData();
 
   step('🔐Bank Manager Login and Add Customer');
   await bankManagerLogin.goToLoginPage();

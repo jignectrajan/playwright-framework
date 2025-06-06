@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from '../basePO'; // Adjust path to pagesobject folder if needed
+import { BasePage } from '../BasePage'; // Adjust path to pagesobject folder if needed
 
 // Locators in camelCase
 const customersTab = 'button[ng-class="btnClass3"]';
@@ -12,7 +12,7 @@ const customerRows = 'table tbody tr';
  */
 export class CustomersPage extends BasePage {
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Constructor to initialize the base Page.
    * @param page Playwright Page object
@@ -22,7 +22,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Clicks the "Customers" tab to navigate to the customers section.
    */
@@ -31,7 +31,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Enters a customer name into the search input to filter customers.
    * @param name - Customer name to search for.
@@ -41,7 +41,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Returns a Locator for the first customer row in the customers table.
    * @returns Locator of the first customer row.
@@ -51,7 +51,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Checks if a customer with the given name is present in the customers table.
    * @param name - Customer name to check for.
@@ -63,7 +63,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Returns a Locator for the customer row matching the given name.
    * @param name - Customer name to find.
@@ -74,7 +74,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Returns a Locator for the Delete button of a specific customer.
    * @param name - Customer name whose delete button is returned.
@@ -85,7 +85,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Clicks the Delete button for the customer with the given name.
    * @param name - Customer name to delete.
@@ -95,7 +95,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Retrieves first name, last name, and post code of the first customer row.
    * @returns An object containing firstName, lastName, and postCode.
@@ -111,7 +111,7 @@ export class CustomersPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Retrieves first name, last name, post code, and account number of the first customer row.
    * @returns An object containing firstName, lastName, postCode, and accountNumber.

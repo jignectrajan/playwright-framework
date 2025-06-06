@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import { BASE_URL } from '../constants';
-import { BasePage } from './basePO';
+import { BasePage } from '../pageobject/BasePage';
 
 // -----------------------------------------
 // Locators for Customer Login Page

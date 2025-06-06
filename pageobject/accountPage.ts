@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../pageobject/basePO'; // adjust path if needed
+import { BasePage } from '../pageobject/BasePage'; // adjust path if needed
 
 // Locators in camelCase
 const depositTab = 'text=Deposit';
@@ -21,7 +21,7 @@ const logoutButton = '//button[text()="Logout"]';
  */
 export class AccountPage extends BasePage {
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * @param page Playwright Page object
    */
   constructor(page: Page) {
@@ -29,7 +29,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Clicks the Logout button.
    */
   async clickOnLogOutButton() {
@@ -38,7 +38,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Performs a deposit of the specified amount.
    * @param amount Amount to deposit
    */
@@ -50,7 +50,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Performs a withdrawal of the specified amount.
    * @param amount Amount to withdraw
    */
@@ -65,7 +65,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Returns the text of any message displayed on the page.
    * @returns Message text or null
    */
@@ -75,7 +75,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Returns the latest transaction details including amount and type.
    * @returns Object containing amount and type of the latest transaction
    */
@@ -94,7 +94,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Returns the current balance displayed on the account page.
    * @returns Balance as a trimmed string
    */
@@ -104,7 +104,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Navigates to the Transactions tab.
    */
   async navigateToTransactions() {
@@ -112,7 +112,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Returns all transactions with their amount and type.
    * @returns Array of transactions
    */
@@ -135,7 +135,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Clicks the Reset button to clear transactions.
    */
   async clickResetButton() {
@@ -144,7 +144,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Returns the count of transaction rows displayed.
    * @returns Number of transactions
    */
@@ -154,7 +154,7 @@ export class AccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    * Returns the currency displayed on the account page.
    * @returns Currency as string
    */

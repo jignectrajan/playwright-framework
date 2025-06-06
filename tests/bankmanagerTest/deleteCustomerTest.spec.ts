@@ -1,16 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { CustomersPage } from '../../pageobject/bankmanager/customersPO';
-import { BankManagerLoginPage } from '../../pageobject/bankmanager/bankManagerLoginPO';
-import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomerPO';
+import { CustomersPage } from '../../pageobject/bankmanager/CustomersPage';
+import { BankManagerLoginPage } from '../../pageobject/bankmanager/BankManagerLoginPage';
+import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomersPage';
 import { createStepLogger } from '../../utilities/stepLogger';
-import { createCustomerData } from '../../testData/customerDataFactory';
+import { CustomerData } from '../../dataFactory/customerData';
+ const customer = CustomerData.createCustomerData(); 
 const step = createStepLogger();
 
 test('Verify that customer is deleted and removed from the customer list', async ({ page }) => {
     const addCustomerPage = new AddCustomerPage(page);
     const customersPage = new CustomersPage(page);
     const loginPage = new BankManagerLoginPage(page);
-    const customer = createCustomerData();
 
     step('Navigating to login page and log in as Bank Manager');
     await loginPage.goToLoginPage();

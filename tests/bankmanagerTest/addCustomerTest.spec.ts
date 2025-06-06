@@ -1,19 +1,17 @@
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomerPO';
-import { CustomersPage } from '../../pageobject/bankmanager/customersPO';
-import { BankManagerLoginPage } from '../../pageobject/bankmanager/bankManagerLoginPO';
+import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomersPage';
+import { CustomersPage } from '../../pageobject/bankmanager/CustomersPage';
+import { BankManagerLoginPage } from '../../pageobject/bankmanager/BankManagerLoginPage';
 import { createStepLogger } from '../../utilities/stepLogger';
-import { createCustomerData } from '../../testData/customerDataFactory'; // <-- import factory
-
+import { CustomerData } from '../../dataFactory/customerData';
+const customer = CustomerData.createCustomerData();
 const step = createStepLogger();
-
 
 test('Verify that customer is added in the customer list', async ({ page }) => {
   const loginPage = new BankManagerLoginPage(page);
   const addCustomerPage = new AddCustomerPage(page);
   const customersPage = new CustomersPage(page);
-  const customer = createCustomerData();
 
   step('Go to login page and log in as Bank Manager');
   await loginPage.goToLoginPage();

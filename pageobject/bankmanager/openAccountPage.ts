@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../basePO'; // Adjust path to pagesobject folder if needed
+import { BasePage } from '../BasePage'; // Adjust path to pagesobject folder if needed
 
 // Locators in camelCase
 const openAccountTab = 'button[ng-class="btnClass2"]';
@@ -13,7 +13,7 @@ const processButton = 'button[type="submit"]';
  */
 export class OpenAccountPage extends BasePage {
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Constructor to initialize the base Page.
    * @param page Playwright Page object
@@ -23,7 +23,7 @@ export class OpenAccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Clicks the "Open Account" tab to navigate to the open account section.
    */
@@ -32,7 +32,7 @@ export class OpenAccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Selects a customer from the customer dropdown by visible label.
    * @param name Customer name to select
@@ -42,7 +42,7 @@ export class OpenAccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Selects a currency from the currency dropdown by visible label.
    * @param currency Currency label to select
@@ -52,7 +52,7 @@ export class OpenAccountPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Clicks the "Process" button to submit the form and waits briefly for processing.
    */

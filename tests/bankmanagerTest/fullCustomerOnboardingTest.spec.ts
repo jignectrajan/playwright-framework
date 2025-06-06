@@ -1,12 +1,13 @@
 // tests/fullCustomerOnboardingFlow.spec.ts
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { BankManagerLoginPage } from '../../pageobject/bankmanager/bankManagerLoginPO';
-import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomerPO';
-import { OpenAccountPage } from '../../pageobject/bankmanager/openAccountPO';
-import { CustomersPage } from '../../pageobject/bankmanager/customersPO';
+import { BankManagerLoginPage } from '../../pageobject/bankmanager/BankManagerLoginPage';
+import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomersPage';
+import { OpenAccountPage } from '../../pageobject/bankmanager/OpenAccountPage';
+import { CustomersPage } from '../../pageobject/bankmanager/CustomersPage';
 import { createStepLogger } from '../../utilities/stepLogger';
-import { createCustomerData } from '../../testData/customerDataFactory';
+import { CustomerData } from '../../dataFactory/customerData';
+const customer = CustomerData.createCustomerData(); 
 const step = createStepLogger();
 
 test('Verify that customer is added, account is opened, and account number is displayed', async ({ page }) => {
@@ -14,7 +15,6 @@ test('Verify that customer is added, account is opened, and account number is di
   const addCustomerPage = new AddCustomerPage(page);
   const openAccountPage = new OpenAccountPage(page);
   const customersPage = new CustomersPage(page);
-  const customer = createCustomerData();
 
   const fullName = `${customer.firstName} ${customer.lastName}`;
 

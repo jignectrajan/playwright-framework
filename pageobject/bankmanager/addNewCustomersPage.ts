@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../basePO';
+import { BasePage } from '../BasePage';
 
 // Locators in camelCase
 const addCustomerTab = "//button[contains(text(),'Add Customer')]";
@@ -14,7 +14,7 @@ export class AddCustomerPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Clicks the "Add Customer" tab.
    */
@@ -23,7 +23,7 @@ export class AddCustomerPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Fills the customer form with first name, last name, and post code.
    * @param firstName - Customer's first name.
@@ -37,7 +37,7 @@ export class AddCustomerPage extends BasePage {
   }
 
   /**
-   * Thursday, June 05, 2025 12:34 PM
+
    *
    * Submits the customer form.
    */
