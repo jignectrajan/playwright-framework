@@ -19,7 +19,7 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     const loggedInName = await page.locator('.fontBig').innerText();
     assert.include(loggedInName, 'Harry Potter', 'User should be logged in as Harry Potter');
 
-    step('💰Depositing ₹5000');
+    step('Depositing ₹5000');
     await accountPage.depositAmount('5000');
     const depositMessage = await accountPage.getMessageText();
     assert.strictEqual(depositMessage?.trim(), 'Deposit Successful', 'Deposit message should match');
@@ -27,7 +27,7 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     assert.strictEqual(depositTransaction.amount, '5000', 'Deposit transaction amount should be 5000');
     assert.strictEqual(depositTransaction.type, 'Credit', 'Deposit transaction type should be Credit');
 
-    step('💸Withdrawing ₹2000');
+    step('Withdrawing ₹2000');
     await accountPage.withdrawAmount('2000');
     const withdrawMessage = await accountPage.getMessageText();
     assert.strictEqual(withdrawMessage?.trim(), 'Transaction successful', 'Withdraw message should match');
@@ -40,7 +40,7 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     const loginPage = new CustomerLoginPage(page);
     const accountPage = new AccountPage(page);
 
-    step('🔐Logging in as Harry Potter');
+    step('Logging in as Harry Potter');
     await loginPage.goToLoginPage();
     await loginPage.clickCustomerLogin();
     await loginPage.selectCustomer('Harry Potter');
@@ -49,7 +49,7 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     const loggedInText = await page.locator('.fontBig').innerText();
     assert.include(loggedInText, 'Harry Potter', 'User should be logged in');
 
-    step('💰Depositing ₹1000');
+    step('Depositing ₹1000');
     await accountPage.depositAmount('1000');
     const depositMsg = await accountPage.getMessageText();
     assert.strictEqual(depositMsg?.trim(), 'Deposit Successful', 'Deposit should succeed');
@@ -57,7 +57,7 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     assert.strictEqual(depositTransaction.amount, '1000', 'Deposit transaction amount should be 1000');
     assert.strictEqual(depositTransaction.type, 'Credit', 'Deposit transaction type should be Credit');
 
-    step('🚫Attempting to withdraw ₹2000 (more than balance)');
+    step('Attempting to withdraw ₹2000 (more than balance)');
     await accountPage.withdrawAmount('2000');
     const errorMsg = await accountPage.getMessageText();
 
@@ -72,7 +72,7 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     const loginPage = new CustomerLoginPage(page);
     const accountPage = new AccountPage(page);
 
-    step('🔐Logging in as Harry Potter');
+    step('Logging in as Harry Potter');
     await loginPage.goToLoginPage();
     await loginPage.clickCustomerLogin();
     await loginPage.selectCustomer('Harry Potter');
@@ -81,24 +81,24 @@ test.describe('Withdraw Test (with prior deposit)', () => {
     const loggedInName = await page.locator('.fontBig').innerText();
     assert.include(loggedInName, 'Harry Potter', 'User should be logged in as Harry Potter');
 
-    step('💰Depositing ₹5000');
+    step('Depositing ₹5000');
     await accountPage.depositAmount('5000');
     const depositMessage = await accountPage.getMessageText();
     assert.strictEqual(depositMessage?.trim(), 'Deposit Successful', 'Deposit message should match');
 
     // Verify balance after deposit
     const balanceAfterDeposit = await accountPage.getBalanceAmount();
-    step(`🧮 Balance after deposit: ₹${balanceAfterDeposit}`);
+    step(`Balance after deposit: ₹${balanceAfterDeposit}`);
     assert.strictEqual(balanceAfterDeposit, '5000', 'Balance should be 5000 after deposit');
 
-    step('💸Withdrawing ₹2000');
+    step('Withdrawing ₹2000');
     await accountPage.withdrawAmount('2000');
     const withdrawMessage = await accountPage.getMessageText();
     assert.strictEqual(withdrawMessage?.trim(), 'Transaction successful', 'Withdraw message should match');
 
     // Verify balance after withdrawal
     const balanceAfterWithdrawal = await accountPage.getBalanceAmount();
-    step(`🧮 Balance after withdrawal: ₹${balanceAfterWithdrawal}`);
+    step(`Balance after withdrawal: ₹${balanceAfterWithdrawal}`);
     assert.strictEqual(balanceAfterWithdrawal, '3000', 'Balance should be 3000 after withdrawal');
   });
 });

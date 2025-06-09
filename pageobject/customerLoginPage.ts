@@ -1,10 +1,7 @@
 import { Page } from '@playwright/test';
 import { BASE_URL } from '../constants';
-import { BasePage } from '../pageobject/BasePage';
+import { BasePage } from '../pageobject/basePage';
 
-// -----------------------------------------
-// Locators for Customer Login Page
-// -----------------------------------------
 const customerLoginButton = 'button[ng-click="customer()"]';
 const userDropdown = '#userSelect';
 const loginButton = 'button[type="submit"]';

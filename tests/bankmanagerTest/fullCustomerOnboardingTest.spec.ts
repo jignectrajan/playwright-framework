@@ -1,10 +1,9 @@
-// tests/fullCustomerOnboardingFlow.spec.ts
 import { test } from '@playwright/test';
 import { assert } from 'chai';
-import { BankManagerLoginPage } from '../../pageobject/bankmanager/BankManagerLoginPage';
+import { CustomersPage } from '../../pageobject/bankmanager/customersPage';
+import { BankManagerLoginPage } from '../../pageobject/bankmanager/bankManagerLoginPage';
 import { AddCustomerPage } from '../../pageobject/bankmanager/addNewCustomersPage';
-import { OpenAccountPage } from '../../pageobject/bankmanager/OpenAccountPage';
-import { CustomersPage } from '../../pageobject/bankmanager/CustomersPage';
+import { OpenAccountPage } from '../../pageobject/bankmanager/openAccountPage';
 import { createStepLogger } from '../../utilities/stepLogger';
 import { CustomerData } from '../../dataFactory/customerData';
 const customer = CustomerData.createCustomerData(); 
@@ -18,26 +17,26 @@ test('Verify that customer is added, account is opened, and account number is di
 
   const fullName = `${customer.firstName} ${customer.lastName}`;
 
-  step('🔐Navigate to login page and log in as Bank Manager');
+  step('Navigate to login page and log in as Bank Manager');
   await loginPage.goToLoginPage();
   await loginPage.clickBankManagerLogin();
 
-  step('➕Add a new customer');
+  step('Add a new customer');
   await addCustomerPage.clickAddCustomerTab();
   await addCustomerPage.fillCustomerForm(customer.firstName, customer.lastName, customer.postCode);
   await addCustomerPage.submitCustomerForm();
 
-  step('💼Open a bank account for the new customer');
+  step('Open a bank account for the new customer');
   await openAccountPage.clickOpenAccountTab();
   await openAccountPage.selectCustomer(fullName);
   await openAccountPage.selectCurrency('Dollar');
   await openAccountPage.clickProcessButton();
 
-  step('🔍Search for customer and verify account details');
+  step('Search for customer and verify account details');
   await customersPage.clickCustomersTab();
   await customersPage.searchCustomer(customer.firstName);
 
-  step('✅Assert all customer details including account number');
+  step('Assert all customer details including account number');
   const { firstName: actualFirstName, lastName: actualLastName, postCode: actualPostCode, accountNumber: actualAccountNumber } = await customersPage.getFirstCustomerRowWithAccount();
 
   assert.equal(actualFirstName, customer.firstName, 'First name should match');

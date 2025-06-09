@@ -1,8 +1,7 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../BasePage'; // Adjusted path assuming 'pagesobject' folder
+import { BasePage } from '../basePage'; // Adjusted path assuming 'pagesobject' folder
 import { BASE_URL } from '../../constants'; // Base URL constant for the application
 
-// Locator in camelCase
 const bankManagerLoginButton = 'button[ng-click="manager()"]';
 
 /**
@@ -11,7 +10,6 @@ const bankManagerLoginButton = 'button[ng-click="manager()"]';
  */
 export class BankManagerLoginPage extends BasePage {
   /**
-
    *
    * Constructor to initialize the base Page.
    * @param page Playwright Page object
@@ -21,7 +19,6 @@ export class BankManagerLoginPage extends BasePage {
   }
 
   /**
-
    *
    * Navigates to the login/home page using the base URL.
    */
@@ -30,7 +27,6 @@ export class BankManagerLoginPage extends BasePage {
   }
 
   /**
-
    *
    * Clicks the "Bank Manager Login" button on the home page.
    */

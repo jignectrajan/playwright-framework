@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../BasePage';
+import { BasePage } from '../basePage';
 
-// Locators in camelCase
 const addCustomerTab = "//button[contains(text(),'Add Customer')]";
 const firstNameInput = 'input[ng-model="fName"]';
 const lastNameInput = 'input[ng-model="lName"]';
@@ -14,7 +13,6 @@ export class AddCustomerPage extends BasePage {
   }
 
   /**
-
    *
    * Clicks the "Add Customer" tab.
    */
@@ -23,7 +21,6 @@ export class AddCustomerPage extends BasePage {
   }
 
   /**
-
    *
    * Fills the customer form with first name, last name, and post code.
    * @param firstName - Customer's first name.
@@ -37,7 +34,6 @@ export class AddCustomerPage extends BasePage {
   }
 
   /**
-
    *
    * Submits the customer form.
    */

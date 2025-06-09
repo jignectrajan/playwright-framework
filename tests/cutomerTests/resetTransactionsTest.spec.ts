@@ -24,13 +24,13 @@ test('Reset button should clear transaction list', async ({ page }) => {
   await accountPage.navigateToTransactions();
 
   const txnBeforeReset = await accountPage.getTransactionCount();
-  step(`🧾 Transactions before reset: ${txnBeforeReset}`);
+  step(`Transactions before reset: ${txnBeforeReset}`);
   assert.ok(txnBeforeReset > 0, 'There should be at least one transaction before reset');
 
   step('Clicking Reset button');
   await accountPage.clickResetButton();
 
   const txnAfterReset = await accountPage.getTransactionCount();
-  step(`🗑️ Transactions after reset: ${txnAfterReset}`);
+  step(`Transactions after reset: ${txnAfterReset}`);
   assert.strictEqual(txnAfterReset, 0, 'All transactions should be cleared after reset');
 });

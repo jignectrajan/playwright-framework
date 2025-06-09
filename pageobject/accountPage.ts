@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../pageobject/BasePage'; // adjust path if needed
+import { BasePage } from '../pageobject/basePage'; // adjust path if needed
 
-// Locators in camelCase
 const depositTab = 'text=Deposit';
 const withdrawTab = '//button[@ng-click="withdrawl()"]';
 const amountInput = 'input[ng-model="amount"]';
@@ -21,7 +20,6 @@ const logoutButton = '//button[text()="Logout"]';
  */
 export class AccountPage extends BasePage {
   /**
-
    * @param page Playwright Page object
    */
   constructor(page: Page) {
@@ -29,7 +27,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Clicks the Logout button.
    */
   async clickOnLogOutButton() {
@@ -38,7 +35,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Performs a deposit of the specified amount.
    * @param amount Amount to deposit
    */
@@ -50,7 +46,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Performs a withdrawal of the specified amount.
    * @param amount Amount to withdraw
    */
@@ -65,7 +60,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Returns the text of any message displayed on the page.
    * @returns Message text or null
    */
@@ -75,7 +69,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Returns the latest transaction details including amount and type.
    * @returns Object containing amount and type of the latest transaction
    */
@@ -94,7 +87,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Returns the current balance displayed on the account page.
    * @returns Balance as a trimmed string
    */
@@ -104,7 +96,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Navigates to the Transactions tab.
    */
   async navigateToTransactions() {
@@ -112,7 +103,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Returns all transactions with their amount and type.
    * @returns Array of transactions
    */
@@ -135,7 +125,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Clicks the Reset button to clear transactions.
    */
   async clickResetButton() {
@@ -144,7 +133,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Returns the count of transaction rows displayed.
    * @returns Number of transactions
    */
@@ -154,7 +142,6 @@ export class AccountPage extends BasePage {
   }
 
   /**
-
    * Returns the currency displayed on the account page.
    * @returns Currency as string
    */

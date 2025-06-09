@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
-import { BasePage } from '../BasePage'; // Adjust path based on your structure
+import { BasePage } from '../basePage'; // Adjust path based on your structure
 
-// Locators in camelCase
 const addCustomerButton = 'button[ng-class="btnClass1"]';
 const openAccountButton = 'button[ng-class="btnClass2"]';
 const customersButton = 'button[ng-class="btnClass3"]';
@@ -12,7 +11,6 @@ const customersButton = 'button[ng-class="btnClass3"]';
  */
 export class BankManagerDashboardPage extends BasePage {
   /**
-   *
    * Constructor to initialize the base Page.
    * @param page Playwright Page object
    */
@@ -21,7 +19,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   *
    * Clicks on "Add Customer" button.
    */
   async clickAddCustomer() {
@@ -29,7 +26,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   *
    * Clicks on "Open Account" button.
    */
   async clickOpenAccount() {
@@ -37,7 +33,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   *
    * Clicks on "Customers" button.
    */
   async clickCustomers() {
@@ -45,7 +40,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   *
    * Verifies if the "Add Customer" button is visible.
    * Includes a wait for the button to become visible.
    * @returns Promise<boolean>
@@ -56,7 +50,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-   *
    * Verifies if the "Open Account" button is visible.
    * @returns Promise<boolean>
    */
@@ -65,8 +58,6 @@ export class BankManagerDashboardPage extends BasePage {
   }
 
   /**
-
-   *
    * Verifies if the "Customers" button is visible.
    * @returns Promise<boolean>
    */
